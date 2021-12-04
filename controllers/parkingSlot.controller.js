@@ -1,15 +1,15 @@
-const { ParkingSlots, Vehicle } = require('../models');
+const { ParkingSlots, Vehicle } = require("../models");
 
 exports.getAllParkingSlots = async (req, res, _next) => {
   try {
     const parkingSlots = await ParkingSlots.findAll({
       include: {
         model: Vehicle,
-        as: 'parkedCar',
+        as: "parkedCar",
       },
     });
-    let message = 'Parking slots found';
-    if (!parkingSlots.length) message = 'No parking slot added to database';
+    let message = "Parking slots found";
+    if (!parkingSlots.length) message = "No parking slot added to database";
     return res.status(200).json({
       status: 200,
       message,
@@ -23,10 +23,10 @@ exports.getAllParkingSlots = async (req, res, _next) => {
 exports.addParkingSlot = async (req, res, _next) => {
   try {
     const { cordinates, status } = req.body;
-    if (!cordinates || !status) throw new Error('Please attach the body');
+    if (!cordinates || !status) throw new Error("Please attach the body");
     const parkingSlot = await ParkingSlots.create(req.body);
-    let message = 'Parking Slot Created';
-    if (!parkingSlot) message = 'unable to create parking slot';
+    let message = "Parking Slot Created";
+    if (!parkingSlot) message = "unable to create parking slot";
     return res.status(200).json({
       status: 200,
       message,
@@ -40,7 +40,7 @@ exports.addParkingSlot = async (req, res, _next) => {
 exports.carParked = async (req, res, _next) => {
   try {
     const { id, status, vehicleId } = req.body;
-    if (!id || !status || !vehicleId) throw new Error('Please attach the body');
+    if (!id || !status || !vehicleId) throw new Error("Please attach the body");
     const carParked = await ParkingSlots.update(
       {
         vehicleId: vehicleId,
@@ -52,8 +52,8 @@ exports.carParked = async (req, res, _next) => {
         },
       }
     );
-    let message = 'Car Parked';
-    if (!carParked) message = 'unable to parked';
+    let message = "Car Parked";
+    if (!carParked) message = "unable to parked";
     return res.status(200).json({
       status: 200,
       message,
@@ -67,10 +67,10 @@ exports.carParked = async (req, res, _next) => {
 exports.unParked = async (req, res, _next) => {
   try {
     const { id, status, vehicleId } = req.body;
-    if (!status || !id || !vehicleId) throw new Error('Please attach the body');
+    if (!status || !id || !vehicleId) throw new Error("Please attach the body");
     const unParked = await ParkingSlots.update(
       {
-        status: 'available',
+        status: "available",
         vehicleId: null,
       },
       {
@@ -79,8 +79,8 @@ exports.unParked = async (req, res, _next) => {
         },
       }
     );
-    let message = 'Car Unparked';
-    if (!unParked) message = 'unable to unparked';
+    let message = "Car Unparked";
+    if (!unParked) message = "unable to unparked";
     return res.status(200).json({
       status: 200,
       message,
@@ -97,17 +97,17 @@ exports.getParkedVehicles = async (req, res, _next) => {
       {
         include: {
           model: Vehicle,
-          as: 'parkedCar',
+          as: "parkedCar",
         },
       },
       {
         where: {
-          status: 'busy',
+          status: "busy",
         },
       }
     );
-    let message = 'Parked cars found!';
-    if (!parkedCars.length) message = 'parked are not available';
+    let message = "Parked cars found!";
+    if (!parkedCars.length) message = "parked are not available";
     return res.status(200).json({
       status: 200,
       message,
@@ -122,12 +122,12 @@ exports.getAvailableParkingSlots = async (req, res, _next) => {
   try {
     const availableParkingSlots = await ParkingSlots.findAll({
       where: {
-        status: 'available',
+        status: "available",
       },
     });
-    let message = 'found available parking slots';
+    let message = "found available parking slots";
     if (!availableParkingSlots.length)
-      message = 'no available parking slots found';
+      message = "no parking slots are available";
     return res.status(200).json({
       status: 200,
       message,
