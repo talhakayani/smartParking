@@ -22,13 +22,13 @@ exports.login = async (req, res, _next) => {
       },
     });
     if (!user)
-      return res.status(200).json({
-        status: 200,
+      return res.status(300).json({
+        status: 300,
         message: "Username/password incorrect",
       });
     if (user.status === "pending")
-      return res.status(200).json({
-        status: 200,
+      return res.status(300).json({
+        status: 300,
         message:
           "We're reviewing your account we will notify you once your acccount is approved!",
       });
