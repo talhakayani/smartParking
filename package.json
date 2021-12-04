@@ -4,7 +4,7 @@
   "description": "Parking in automation",
   "main": "index.js",
   "scripts": {
-    "build": "npx sequelize db:create db:migrate --env production",
+    "build": "sequelize-cli db:create db:migrate --env production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ahsan, Sohaib",
@@ -13,6 +13,7 @@
     "express": "^4.17.1",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.9.0"
+    "sequelize": "^6.9.0",
+    "sequelize-cli": "^6.3.0"
   }
 }
