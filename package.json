@@ -4,7 +4,7 @@
   "description": "Parking in automation",
   "main": "index.js",
   "scripts": {
-    "build": "sequelize-cli db:create db:migrate --env production",
+    "build": "sequelize-cli db:create db:migrate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ahsan, Sohaib",
