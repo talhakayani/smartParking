@@ -4,7 +4,7 @@
   "description": "Parking in automation",
   "main": "index.js",
   "scripts": {
-    "build": "sequelize db:create db:migrate",
+    "build": "heroku run sequelize db:migrate --env production -m --app com-smart-parking",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ahsan, Sohaib",
