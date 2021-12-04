@@ -1,4 +1,18 @@
 {
+  "development": {
+    "username": "postgres",
+    "password": "admin",
+    "database": "smartparking",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
   "production": {
     "username": "kpkmhffwimzdcc",
     "password": "7ee5b39d312651ec7d3d0fa675f0b4f8e69ce020e70fe4133872c3565852ea06",
