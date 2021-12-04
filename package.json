@@ -4,6 +4,7 @@
   "description": "Parking in automation",
   "main": "index.js",
   "scripts": {
+    "build": "npx sequelize db:create db:migrate --env production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ahsan, Sohaib",
