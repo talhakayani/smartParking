@@ -80,7 +80,7 @@ exports.getVehicleByUserId = async (req, res, _next) => {
 exports.getLatestVechileById = async (req, res, _next) => {
   try {
     const { id } = req.params;
-    const vehicles = await Vehicle.findAll({ id });
+    const vehicles = await Vehicle.findAll({ id: id });
     if (!vehicles.length) {
       return res.status(300).json({
         status: 300,
