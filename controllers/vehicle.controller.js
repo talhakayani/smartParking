@@ -80,16 +80,7 @@ exports.getVehicleByUserId = async (req, res, _next) => {
 exports.getLatestVechileById = async (req, res, _next) => {
   try {
     const { id } = req.params;
-    const vehicles = await Vehicle.findAll(
-      { where: id },
-      {
-        include: {
-          model: User,
-          as: "user",
-          foreignKey: "username",
-        },
-      }
-    );
+    const vehicles = await Vehicle.findAll({ where: id });
     if (!vehicles.length) {
       return res.status(300).json({
         status: 300,
