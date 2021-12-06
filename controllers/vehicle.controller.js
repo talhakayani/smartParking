@@ -80,22 +80,14 @@ exports.getVehicleByUserId = async (req, res, _next) => {
 exports.getLatestVechileById = async (req, res, _next) => {
   try {
     const { id } = req.params;
-    const vehicles = await Vehicle.findAll(
-      { id },
-      {
-        include: {
-          model: User,
-          as: "user",
-          foreignKey: "username",
-        },
-      }
-    );
+    const vehicles = await Vehicle.findAll({ id });
     if (!vehicles.length) {
       return res.status(300).json({
         status: 300,
         message: "No vehicle found for this user",
       });
     }
+    console.log(vehicles);
     return res.status(200).json({
       status: 200,
       message: "Vehicles found",
